@@ -26,3 +26,134 @@ body:has(#darkmode-toggle:checked) {
         --text-color: #222222 !important;
     }
 }
+
+
+
+
+/*CAMBIOS*/
+
+:root 
+{
+    /* MODO CLARO */
+    --bg-main: #ffffff;
+    --bg-nav: #f8f9fa;
+    --text-color: #222222;
+    --accent-color: #6d3d89; /* Morado distintivo */
+    --nav-hover: #e9ecef;
+    --transition: all 0.3s ease;
+}
+
+/* 1. AUTO-DETECCIÓN: Si el sistema ya está en oscuro, cambiamos las variables */
+@media (prefers-color-scheme: dark) 
+{
+    :root 
+    {
+        --bg-color: #1e1e1e;
+        --text-color: #f5f5f5;
+    }
+}
+
+/* 2. TU BOTÓN: Sigue funcionando para "forzar" el cambio manualmente */
+body:has(#darkmode-toggle:checked) 
+{
+    --bg-main: #121212;
+    --bg-nav: #1f1f1f;
+    --text-color: #f5f5f5;
+    --accent-color: #bb86fc; /* Morado lila para modo oscuro */
+    --nav-hover: #333333;
+
+}
+
+/* 3. REVERSO: Si el sistema está en oscuro pero el usuario quiere CLARO */
+/* (Esto es por si el usuario prefiere lo opuesto a su sistema) */
+@media (prefers-color-scheme: dark) 
+{
+    body:has(#darkmode-toggle:checked)
+    {
+        --bg-color: #ffffff !important;
+        --text-color: #222222 !important;
+    }
+}
+
+body 
+{
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: var(--transition);
+}
+/*EDICION DE PAGINA MODO CREATIVO PARA COLORES*/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--bg-nav);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+/* Efecto Hover (Requisito: Elementos de navegación adicionales) */
+.nav-links a:hover {
+    background-color: var(--nav-hover);
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/*BOTON DE ACCCESO A LO DEMÀS*/
+.label-switch {
+    padding: 8px 18px;
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.label-switch:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+#darkmode-toggle {
+    display: none; /* Ocultamos el checkbox feo */
+}
+
+/*tengan que rellenar sus datos, dales un contenedor centrado*/
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.cv-header {
+    text-align: center;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
