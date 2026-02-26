@@ -1,4 +1,10 @@
-
+/* =========================================
+   RESET CSS BÁSICO
+   Elimina estilos por defecto del navegador
+   ========================================= */
+ 
+/* Elimina márgenes y rellenos por defecto */
+*,
 *::before,
 *::after {
   margin: 0;
