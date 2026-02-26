@@ -1,0 +1,11 @@
+/* 1. MODO AZUL (Tu diseño por defecto) */
+:root {
+    --bg-main: #e4ebfa; /* Fondo general celeste */
+    --bg-nav: #ffffff; /* Fondo de tarjetas y menú (blanco para que el texto sea legible) */
+    --text-color: #222222; /* Texto oscuro */
+    --accent-color: #1029BA; /* Azul fuerte principal */
+    --accent-hover: #7d9ce3; /* Azul medio para hovers */
+    --nav-hover: #afc3f0; /* Celeste claro para botones del menú */
+    --footer-bg: #1029BA; /* Footer azul fuerte */
+    --transition: all 0.3s ease;
+}
