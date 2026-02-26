@@ -1,0 +1,28 @@
+/* Tu código base se mantiene igual */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+}
+
+/* 1. AUTO-DETECCIÓN: Si el sistema ya está en oscuro, cambiamos las variables */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1e1e1e;
+        --text-color: #f5f5f5;
+    }
+}
+
+/* 2. TU BOTÓN: Sigue funcionando para "forzar" el cambio manualmente */
+body:has(#darkmode-toggle:checked) {
+    --bg-color: #1e1e1e !important;
+    --text-color: #f5f5f5 !important;
+}
+
+/* 3. REVERSO: Si el sistema está en oscuro pero el usuario quiere CLARO */
+/* (Esto es por si el usuario prefiere lo opuesto a su sistema) */
+@media (prefers-color-scheme: dark) {
+    body:has(#darkmode-toggle:checked) {
+        --bg-color: #ffffff !important;
+        --text-color: #222222 !important;
+    }
+}
