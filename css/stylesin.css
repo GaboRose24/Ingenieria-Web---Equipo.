@@ -145,121 +145,84 @@ header h1 {
 }
 
 
-/* 5MENÚ LATERAL DESPLEGABLE*/
+/* 5. MENÚ LATERAL DESPLEGABLE*/
 
-
-/* 5.1 CHECKBOX  interruptor del menú */
-.respmenu input[type="checkbox"] {
-    /* Lo ancla a la pantalla, no importa cuánto baje el usuario */
-    position: fixed;
-    /* Lo posiciona a 25px de arriba y 20px de la izquierda */
-    top: 25px;
-    left: 20px;
-    /* Le da un tamaño cuadrado de 40x40 píxeles */
-    width: 40px;
-    height: 40px;
-    /* Lo hace 100% transparente */
-    opacity: 0; 
-    /*Asegura que siempre esté por encima del ícono y del menú */
-    z-index: 1000;
-    /* Pone el puntero en forma de mano para que el se sepa que se puede dar clic */
-    cursor: pointer;
+.dropdown-menu {
+    /* Sirve como "ancla" para que el menú oculto sepa de dónde desplegarse */
+    position: relative;
+    /* Evita que el contenedor ocupe todo el ancho de la pantalla */
+    display: inline-block;
+    /* Da un respiro de 20px hacia abajo */
+    margin-bottom: 20px;
 }
 
-/* 5.2 MODO DE HAMBURGUESA/CERRAR */
-.respmenu .menu-icon {
-    /* Lo ancla exactamente en el mismo lugar que el checkbox */
-    position: fixed;
-    top: 25px;
-    left: 20px;
-    /* Tamaño del ícono (35px) */
-    font-size: 35px;
-    /* Color blanco para que resalte sobre el fondo */
-    color: #ffffff;
-    /* Capa 999: Justo una capa por debajo del checkbox invisible */
-    z-index: 999;
-    /* Evita que el ícono intercepte el clic, dejando que el clic pase directo al checkbox */
-    pointer-events: none; 
-    transition: 0.3s;
-}
-
-/* 5.3 EL PANEL DEL MENÚ LATERAL */
-.respmenu nav.menu-links {
-    /* Lo ancla a la pantalla para que no se mueva con el scroll */
-    position: fixed;
-    top: 0;
-    /* Lo esconde 300 píxeles fuera de la pantalla */
-    left: -300px; 
-    /* Ancho del panel: 250 píxeles */
-    width: 250px;
-    /* Altura: 100vh significa el 100% del alto de la pantalla visible */
-    height: 100vh;
-    /* Fondo del panel usando tu color azul principal */
-    background-color: var(--accent-color); 
-    /* Empuja los botones 80px hacia abajo para que no choquen con el ícono */
-    padding-top: 80px; 
-    /* Hace que cuando cambie la posición 'left', se deslice suavemente en 0.4 segundos */
-    transition: left 0.4s ease; 
-    /* Capa 998: Por debajo del checkbox y del ícono, pero por encima de la página */
-    z-index: 998;
-    /* Sombra gruesa a la derecha para dar la ilusión de que está flotando sobre la página */
-    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
-}
-
-/* 5.4 LA LÓGICA DE APERTURA */
-/* Si el checkbox está :checked (con palomita), busca al 'nav' y cámbia el 'left' a 0 métiendolo a la pantalla) */
-.respmenu input:checked ~ nav.menu-links { left: 0; }
-/* Si está abierto, oculta el ícono de "abrir" */
-.respmenu input:checked ~ .open-icon { display: none; }
-/* Si está cerrado, oculta el ícono de "cerrar" */
-.respmenu input:not(:checked) ~ .close-icon { display: none; }
-
-/* 5.5 ESTILOS DE LOS BOTONES DENTRO DEL MENÚ LATERAL */
-.respmenu ul { 
-    /* Quita las viñetas de la lista */
-    list-style: none; 
-}
-
-.respmenu li a {
-    /* Hace que el enlace ocupe todo el ancho disponible, pareciendo un botón cuadrado */
-    display: block;
-    color: #ffffff;
-    text-decoration: none;
+/* El botón principal del menú */
+.dropbtn {
+    /* Usa tu variable de color azul para el fondo */
+    background-color: var(--accent-color);
+    /* Texto blanco para contrastar */
+    color: white;
+    /* Lo hace un botón grande y fácil de clickear */
+    padding: 12px 20px;
+    font-size: 16px;
     font-weight: bold;
-    /* Espaciado interno para hacerlo un botón grande y fácil de presionar */
-    padding: 15px 25px;
-    /* Línea separadora sutil en la parte inferior de cada botón usando tu azul medio */
-    border-bottom: 1px solid var(--accent-hover); 
-    transition: 0.3s;
-}
-
-/* Animación al pasar el mouse por encima del botón */
-.respmenu li a:hover {
-    /* Cambia el fondo a tu azul medio */
-    background-color: var(--accent-hover); 
-    padding-left: 35px; 
-}
-
-/* 5.6 BOTÓN ESPECIAL PARA REGRESAR A "BOX MODEL" */
-.respmenu li a.btn-boxmodel {
-    /* Usa el color de fondo general de la página para contrastar */
-    background-color: var(--bg-main); 
-    /* Usa el azul  para el texto y fuerza que no sea sobreescrito  */
-    color: var(--accent-color) !important; 
-    /* Márgenes alrededor para separarlo de los demás botones */
-    margin: 10px 15px;
-    /* Bordes redondeados */
-    border-radius: 5px;
-    text-align: center;
+    /* Le quita el borde feo que traen por defecto */
     border: none;
+    /* Esquinas redondeadas suaves */
+    border-radius: 5px;
+    /* Pone la manita al pasar el mouse */
+    cursor: pointer;
+    /* Animación suave para cuando cambie de color o pasar el mouse */
+    transition: var(--transition);
 }
 
-.respmenu li a.btn-boxmodel:hover {
-    /* Cambia al celeste claro al pasar el mouse */
-    background-color: var(--nav-hover); 
-    /* Efecto 3D: Lo baja 2 pixeles (al ser positivo va hacia abajo en Y) */
-    transform: translateY(2px);
-    /* También lo empuja a la derecha */
-    padding-left: 25px;
+/* Efecto hover del botón principal */
+.dropbtn:hover {
+    /* Cambia al azul más clarito */
+    background-color: var(--accent-hover);
 }
 
+/* La caja oculta con las opciones  */
+.dropdown-content {
+    /* ¡ Mantiene la caja oculta hasta que se le llame */
+    display: none;
+    /* Lo saca del flujo normal y lo posiciona exactamente debajo del botón */
+    position: absolute;
+    /* Usa el fondo blanco en día y gris en noche */
+    background-color: var(--bg-nav);
+    /* Ancho mínimo para que las palabras no se amontonen */
+    min-width: 160px;
+    /* Sombra elegante tipo flotante */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* Se asegura de que se despliegue por encima del resto de la página */
+    z-index: 1;
+    /* Esquinas redondeadas y recorta cualquier cosa que se salga */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/*  enlaces dentro del menú */
+.dropdown-content a {
+    /* Color de texto oscuro/claro dependiendo del modo */
+    color: var(--text-color);
+    /* Espaciado interno para que parezcan botones */
+    padding: 12px 16px;
+    text-decoration: none;
+    /* Hace que cada enlace ocupe toda su línea  */
+    display: block;
+    transition: var(--transition);
+}
+
+/* Efecto hover de cada opción del submenú */
+.dropdown-content a:hover {
+    /* Fondo celeste al pasar el mouse */
+    background-color: var(--nav-hover);
+    /* Texto en azul fuerte */
+    color: var(--accent-color);
+}
+
+
+/* Cuando pases el mouse por el contenedor, cambia el submenú a display: block mostrandolo */
+.dropdown-menu:hover .dropdown-content {
+    display: block;
+}
