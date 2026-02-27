@@ -108,3 +108,38 @@ header h1 {
 }
 
 
+/*4.BOTÓN DE MODO OSCURO*/
+
+
+.label-switch {
+    /* Espaciado interno: 8px arriba/abajo y 18px a los lados para darle forma de pastilla */
+    padding: 8px 18px;
+    /* Dibuja un borde de 2 pixeles, sólido, usando tu azul principal */
+    border: 2px solid var(--bg-main);
+    /* Redondea las esquinas a 20px, haciéndolo parecer un botón moderno ovalado */
+    border-radius: 20px;
+    /* Cambia el cursor a una 'manita' cuando pasas por encima, indicando que es clickeable */
+    cursor: pointer;
+    /* Tamaño de letra un poquito más pequeño que el texto normal */
+    font-size: 0.9rem;
+    /* Permite que el botón respete sus márgenes y rellenos sin romper la línea de texto */
+    display: inline-block;
+    /* Color de la letra del botón  */
+    color: var(--bg-nav);
+    /* Hace que el cambio de color al pasar el mouse sea un degradado suave */
+    transition: var(--transition);
+}
+
+/* Efecto cuando el usuario pasa el mouse POR ENCIMA del botón */
+.label-switch:hover {
+    /* Rellena el fondo del botón con tu color azul fuerte */
+    background-color: var(--text-color);
+    /* Cambia el texto a blanco puro para que se pueda ver */
+    color: #ffffff;
+}
+
+/* Checkbox */
+#darkmode-toggle {
+    /*Lo oculta visualmente de la pantalla */
+    display: none; 
+}
