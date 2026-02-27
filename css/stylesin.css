@@ -1,4 +1,4 @@
-/* 1. MODO AZUL (Tu diseño por defecto) */
+/* 1. MODO AZUL*/
 :root {
     --bg-main: #e4ebfa; /* Fondo general celeste */
     --bg-nav: #ffffff; /* Fondo de tarjetas y menú  */
@@ -10,7 +10,7 @@
     --transition: all 0.3s ease;
 }
 
-/* 2. MODO OSCURO EXACTO (Solo se activa con tu botón) */
+/* 2. MODO OSCURO EXACTO */
 body:has(#darkmode-toggle:checked) {
     --bg-main: #000000; /* Fondo negro */
     --bg-nav: #1f1f1f; /* Tarjetas y menú grises oscuros */
@@ -20,3 +20,91 @@ body:has(#darkmode-toggle:checked) {
     --nav-hover: #333333; /* Gris oscuro para botones del menú */
     --footer-bg: #0a192f; /* Azul súper oscuro para el footer */
 }
+
+
+/* 3.COMPONENTES DE LA PÁGINA*/
+
+
+header {
+    /* Llama a la variable del azul para pintar el fondo */
+    background-color: var(--accent-color); 
+    /* Texto en blanco para que contraste con el fondo azul */
+    color: #ffffff; 
+    /* Espaciado interno: 40px arriba/abajo y 20px a los lados */
+    padding: 40px 20px;
+    /* Centra todo el texto que esté dentro del header */
+    text-align: center;
+    /* Dibuja una línea de 5px en la parte inferior */
+    border-bottom: 5px solid var(--accent-hover);
+    /* Empuja los elementos que estén debajo del header 30px hacia abajo */
+    margin-bottom: 30px;
+    /* Crea una sombra debajo del header para darle efecto  */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Hace que los cambios de color (al pasar a modo oscuro) sean suaves */
+    transition: var(--transition);
+}
+
+header h1 {
+    /* Tamaño de letra grande*/
+    font-size: 2.2rem;
+    /* Separa las letras entre sí por 2px */
+    letter-spacing: 2px;
+}
+
+.navbar {
+    
+    display: flex;
+    /* Centra los elementos verticalmente para que no queden chuecos */
+    align-items: center;
+    /* Espaciado interno: 1 rem arriba/abajo, y 5% a los lados (se adapta a la pantalla) */
+    padding: 1rem 5%;
+    /* Fondo del menú */
+    background-color: var(--bg-nav);
+    /* Sombra debajo del menú de navegación */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Hace que el menú se quede "pegado" en la pantalla cuando subes y bajas */
+    position: sticky;
+    /* Le dice al menú pegajoso que se quede exactamente hasta arriba (0 pixeles) */
+    top: 0;
+    /* Asegura que el menú siempre esté por ENCIMA de otros elementos (como las fotos) */
+    z-index: 1000;
+    /* Cambio suave de colores al alternar modo oscuro */
+    transition: var(--transition);
+}
+
+
+.nav-links {
+    /* Activa Flexbox para los botones del menú, poniéndolos en fila */
+    display: flex;
+    /* Quita los puntos viñeta que traen las listas (<ul>) por defecto */
+    list-style: none;
+    /* Crea una separación exacta de 20px entre cada botón */
+    gap: 20px;
+}
+
+.nav-links a {
+    /* Quita la línea de subrayado de los enlaces web */
+    text-decoration: none;
+    /* Color del texto ( */
+    color: var(--text-color);
+    /* Grosor de letra intermedio  */
+    font-weight: 500;
+    /* Relleno del botón */
+    padding: 8px 15px;
+    /* Redondea las esquinas del botón 5 pixeles */
+    border-radius: 5px;
+    /* Hace que la animación al pasar el mouse sea suave */
+    transition: var(--transition);
+}
+
+/* Efecto cuando se pasa el mouse POR ENCIMA del enlace (:hover) */
+.nav-links a:hover {
+    /* Pinta un fondo celeste claro al botón */
+    background-color: var(--nav-hover);
+    /* Cambia el color del texto azul  */
+    color: var(--accent-color);
+    /* Hace que el botón "flote" o se levante 2 pixeles hacia arriba (Efecto 3D) */
+    transform: translateY(-2px);
+}
+
+
