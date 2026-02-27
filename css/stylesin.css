@@ -246,3 +246,38 @@ footer {
     /* Efecto de difuminado suave cuando cambias entre modo claro y oscuro */
     transition: var(--transition);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Diseño responsivo  */
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column; 
+    }
+
+    .sidebar {
+        flex: 1 1 100%;
+        min-height: auto;
+    }
+
+    .dropdown-content {
+        position: relative; /* evita que se desborde */
+    }
+}
