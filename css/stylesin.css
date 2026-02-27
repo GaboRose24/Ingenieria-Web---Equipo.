@@ -226,3 +226,23 @@ header h1 {
 .dropdown-menu:hover .dropdown-content {
     display: block;
 }
+
+
+/* 6. FOOTER */
+
+footer {
+    /* Llama a la variable del fondo dependiendo de si es oscuro o claro */
+    background-color: var(--footer-bg); 
+    /* El texto  será blanco para que se lea sobre el fondo oscuro */
+    color: #ffffff; 
+    /* Crea un colchón de 30px de espacio por dentro para que el texto respire */
+    padding: 30px; 
+    /* Centra el texto de horizontalmente */
+    text-align: center;
+    /* Dibuja una línea de 5px en la parte superior del footer usando tu azul */
+    border-top: 5px solid var(--accent-hover); 
+    /* Empuja el footer 40px hacia abajo para separarlo del contenido principal */
+    margin-top: 40px;
+    /* Efecto de difuminado suave cuando cambias entre modo claro y oscuro */
+    transition: var(--transition);
+}
