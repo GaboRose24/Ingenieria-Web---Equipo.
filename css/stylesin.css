@@ -247,7 +247,28 @@ footer {
     transition: var(--transition);
 }
 
+/* 7. CONTENEDOR PRINCIPAL Y CONTENIDO */
+.container {
+    /* Empuja al footer hasta abajo*/
+    flex-grow: 1; 
+    
+    /* Centrado del contenido */
+    max-width: 1000px; /* Evita que el texto se estire por toda la pantalla en monitores grandes */
+    margin: 40px auto; /* Centra el contenedor a los lados y le da 40px despacio arriba/abajo */
+    padding: 0 20px; /* Para que no pegue en el borde del celular */
+    width: 100%; /* Asegura que tome el espacio correcto */
+}
 
+/* Estilo a la zona de bienvenida */
+.content {
+    background-color: var(--bg-nav);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    text-align: center; /* Centra el texto de bienvenida */
+    transition: var(--transition);
+}
 
 
 
