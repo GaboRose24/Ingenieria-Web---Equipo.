@@ -16,7 +16,7 @@ body {
     flex-direction: column;
 }
 
-/* 2. MODO OSCURO EXACTO */
+/* 2. MODO OSCURO */
 body:has(#darkmode-toggle:checked) {
     --bg-main: #000000; /* Fondo negro */
     --bg-nav: #1f1f1f; /* Tarjetas y menú grises oscuros */
@@ -61,7 +61,10 @@ header h1 {
     
     display: flex;
     /* Centra los elementos verticalmente para que no queden chuecos */
-    align-items: center;
+    justify-content: space-between; /* ¡separa los elememntos del menú */
+
+    align-items: center; /* Centra todo */
+
     /* Espaciado interno: 1 rem arriba/abajo, y 5% a los lados (se adapta a la pantalla) */
     padding: 1rem 5%;
     /* Fondo del menú */
@@ -178,8 +181,8 @@ header h1 {
     position: relative;
     /* Evita que el contenedor ocupe todo el ancho de la pantalla */
     display: inline-block;
-    /* Da un respiro de 20px hacia abajo */
-    margin-bottom: 20px;
+    /* Da un respiro de 20px hacia abajo 
+    margin-bottom: 20px;*/
 }
 
 /* El botón principal del menú */
