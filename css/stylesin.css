@@ -278,7 +278,7 @@ footer {
     /* Dibuja una línea de 5px en la parte superior del footer usando tu azul */
     border-top: 5px solid var(--accent-hover); 
     /* Empuja el footer 40px hacia abajo para separarlo del contenido principal */
-    margin-top: 40px;
+    margin-top: auto;
     /* Efecto de difuminado suave cuando cambias entre modo claro y oscuro */
     transition: var(--transition);
 }
@@ -293,6 +293,7 @@ footer {
     margin: 40px auto; /* Centra el contenedor a los lados y le da 40px despacio arriba/abajo */
     padding: 0 20px; /* Para que no pegue en el borde del celular */
     width: 100%; /* Asegura que tome el espacio correcto */
+    box-sizing: border-box; /* Previene desbordamientos */
 }
 
 /* Estilo a la zona de bienvenida */
