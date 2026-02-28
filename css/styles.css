@@ -1,42 +1,52 @@
+/* 1. MODO AZUL*/
 :root {
-    --primary: #1029BA;
-    --primary-dark: #0B1E8A;
-    --primary-light: #7d9ce3;
-    --background-soft: #e4ebfa;
-    --backgroung-light: #afc3f0;
-    --white: #FFFFFF;
-    --gray-dark: #1F2937;
-    --footer-bg: #1029BA;
-    --transition: all 0.3s ease; 
+    --bg-main: #e4ebfa; /* Fondo general celeste */
+    --bg-nav: #ffffff; /* Fondo de tarjetas y menú  */
+    --text-color: #222222; /* Texto oscuro */
+    --accent-color: #1029BA; /* Azul fuerte principal */
+    --accent-hover: #7d9ce3; /* Azul medio */
+    --nav-hover: #afc3f0; /* Celeste claro para botones del menú */
+    --footer-bg: #1029BA; /* Footer azul fuerte */
+    --transition: all 0.3s ease;
 }
 
-/*  Estilos generales  */
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-soft);
 }
 
-/*Modo Oscuro*/
+/* 2. MODO OSCURO */
 body:has(#darkmode-toggle:checked) {
-    --background-soft: #000000; /* Fondo negro */
-    --white: #1f1f1f; /* Tarjetas y menú grises oscuros */
+    --bg-main: #000000; /* Fondo negro */
+    --bg-nav: #1f1f1f; /* Tarjetas y menú grises oscuros */
     --text-color: #f5f5f5; /* Texto blanco/gris claro */
-    --primary: #7d9ce3; /* Usamos azul medio  */
-    --primary-light: #afc3f0; /* Celeste para hovers */
-    --backgroung-light: #333333; /* Gris oscuro para botones del menú */
+    --accent-color: #7d9ce3; /* Usamos azul medio  */
+    --accent-hover: #afc3f0; /* Celeste para hovers */
+    --nav-hover: #333333; /* Gris oscuro para botones del menú */
     --footer-bg: #0a192f; /* Azul súper oscuro para el footer */
 }
 
-/*  Header  */
+
+/* 3.COMPONENTES DE LA PÁGINA*/
+
+
 header {
-    background-color: var(--primary); 
+    /* Llama a la variable del azul para pintar el fondo */
+    background-color: var(--accent-color); 
+    /* Texto en blanco para que contraste con el fondo azul */
     color: #ffffff; 
+    /* Espaciado interno: 40px arriba/abajo y 20px a los lados */
     padding: 40px 20px;
+    /* Centra todo el texto que esté dentro del header */
     text-align: center;
-    border-bottom: 5px solid var(--primary-light);
+    /* Dibuja una línea de 5px en la parte inferior */
+    border-bottom: 5px solid var(--accent-hover);
+    /* Empuja los elementos que estén debajo del header 30px hacia abajo */
     margin-bottom: 30px;
+    /* Crea una sombra debajo del header para darle efecto  */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Hace que los cambios de color (al pasar a modo oscuro) sean suaves */
     transition: var(--transition);
 }
 
@@ -47,149 +57,73 @@ header h1 {
     letter-spacing: 2px;
 }
 
-/*  Contenedor principal */
-.container {
-    flex-grow: 1;
-    flex: 1 0 auto;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-}
-
-
-/*  Contenido principal */
-.content {
-    background-color: var(--white);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-top: 20px;
-    text-align: center; /* Centra el texto de bienvenida */
-    transition: var(--transition);
-}
-
-/*  Footer */
-footer {
-    background-color: var(--footer-bg); 
-    color: #ffffff; 
-    padding: 30px;
-    text-align: center;
-    flex-shrink: 0;
-    border-top: 5px solid var(--primary-light);  
-    width: 100%;
-}
-
-
 .navbar {
+    
     display: flex;
-    align-items: center;
+    /* Centra los elementos verticalmente para que no queden chuecos */
+    justify-content: space-between; /* ¡separa los elememntos del menú */
+
+    align-items: center; /* Centra todo */
+
+    /* Espaciado interno: 1 rem arriba/abajo, y 5% a los lados (se adapta a la pantalla) */
     padding: 1rem 5%;
-    background-color: var(--white);
+    /* Fondo del menú */
+    background-color: var(--bg-nav);
+    /* Sombra debajo del menú de navegación */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* Hace que el menú se quede "pegado" en la pantalla cuando subes y bajas */
     position: sticky;
+    /* Le dice al menú pegajoso que se quede exactamente hasta arriba (0 pixeles) */
     top: 0;
+    /* Asegura que el menú siempre esté por ENCIMA de otros elementos (como las fotos) */
     z-index: 1000;
+    /* Cambio suave de colores al alternar modo oscuro */
     transition: var(--transition);
 }
+
 
 .nav-links {
+    /* Activa Flexbox para los botones del menú, poniéndolos en fila */
     display: flex;
+    /* Quita los puntos viñeta que traen las listas (<ul>) por defecto */
     list-style: none;
+    /* Crea una separación exacta de 20px entre cada botón */
     gap: 20px;
 }
 
 .nav-links a {
+    /* Quita la línea de subrayado de los enlaces web */
     text-decoration: none;
+    /* Color del texto ( */
     color: var(--text-color);
+    /* Grosor de letra intermedio  */
     font-weight: 500;
+    /* Relleno del botón */
     padding: 8px 15px;
+    /* Redondea las esquinas del botón 5 pixeles */
     border-radius: 5px;
+    /* Hace que la animación al pasar el mouse sea suave */
     transition: var(--transition);
 }
 
+/* Efecto cuando se pasa el mouse POR ENCIMA del enlace (:hover) */
 .nav-links a:hover {
-    background-color: var(--primary-light);
-    color: var(--primary);
+    /* Pinta un fondo celeste claro al botón */
+    background-color: var(--nav-hover);
+    /* Cambia el color del texto azul  */
+    color: var(--accent-color);
+    /* Hace que el botón "flote" o se levante 2 pixeles hacia arriba (Efecto 3D) */
     transform: translateY(-2px);
 }
 
-/*  Menú desplegable */
-.dropdown-menu {
-    position: relative;
-    width: 200px;
-}
 
-/* Botón principal */
-.dropbtn {
-    background-color: var(--primary);
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    color: white;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    width: 200px;
-    text-align: left;
-}
+/*4.BOTÓN DE MODO OSCURO*/
 
-/* Contenedor oculto */
-.dropdown-content {
-    display: block;
-    position: absolute;
-    background-color: var(--white);
-    min-width: 180px;
-    box-shadow: 0px 15px 25px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 1;
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-15px);
-    transition: all 0.35s ease;
-}
-
-/* Opciones del menú */
-.dropdown-content a {
-    color: black;
-    padding: 12px;
-    display: block;
-    border-bottom: 1px solid #ddd;
-    transform: translateX(-10px);
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.dropdown-menu:hover .dropdown-content a {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-/* Hover en opciones */
-.dropdown-content a:hover {
-    background-color: var(--primary-light);
-    color: var(--primary);
-    padding-left: 22px;
-}
-
-/* Mostrar menú al pasar el cursor */
-.dropdown-menu:hover .dropdown-content {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* Cambio visual cuando pasas el mouse sobre el botón */
-.dropdown-menu:hover .dropbtn {
-    background-color: var(--primary-dark);
-}
 
 .label-switch {
     width: 60px;
     height: 30px;
-    background-color: var(--primary-light);
+    background-color: var(--nav-hover);
     border-radius: 50px;
     position: relative;
     cursor: pointer;
@@ -227,22 +161,299 @@ footer {
 
 /* Efecto cuando el usuario pasa el mouse POR ENCIMA del botón */
 .label-switch:hover {
-    background-color: var(--gray-dark);
+    /* Rellena el fondo del botón con tu color azul fuerte */
+    background-color: var(--text-color);
+    /* Cambia el texto a blanco puro para que se pueda ver */
     color: var(--accent-color);
 }
 
 /* Checkbox */
 #darkmode-toggle {
-    
+    /*Lo oculta visualmente de la pantalla */
     display: none; 
 }
+
+
+/* 5. MENÚ LATERAL DESPLEGABLE*/
+
+.dropdown-menu {
+    /* Sirve como "ancla" para que el menú oculto sepa de dónde desplegarse */
+    position: relative;
+    /* Evita que el contenedor ocupe todo el ancho de la pantalla 
+    display: inline-block;*/
+    /* Da un respiro de 20px hacia abajo 
+    margin-bottom: 20px;*/
+}
+
+/* El botón principal del menú */
+.dropbtn {
+    /* Usa tu variable de color azul para el fondo */
+    background-color: var(--accent-color);
+    /* Texto blanco para contrastar */
+    color: white;
+    /* Lo hace un botón grande y fácil de clickear */
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    /* Le quita el borde feo que traen por defecto */
+    border: none;
+    /* Esquinas redondeadas suaves */
+    border-radius: 5px;
+    /* Pone la manita al pasar el mouse */
+    cursor: pointer;
+    /* Animación suave para cuando cambie de color o pasar el mouse */
+    transition: var(--transition);
+}
+
+/* Efecto hover del botón principal */
+.dropbtn:hover {
+    /* Cambia al azul más clarito */
+    background-color: var(--accent-hover);
+}
+
+/* La caja oculta con las opciones  */
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: var(--bg-nav);
+    min-width: 180px;
+    box-shadow: 0px 15px 25px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: all 0.35s ease;
+}
+
+/*  enlaces dentro del menú */
+.dropdown-content a {
+    /* Color de texto oscuro/claro dependiendo del modo */
+    color: var(--text-color);
+    /* Espaciado interno para que parezcan botones */
+    padding: 12px 16px;
+    text-decoration: none;
+    /* Hace que cada enlace ocupe toda su línea  */
+    display: block;
+    transition: var(--transition);
+    transform: translateX(-10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu:hover .dropdown-content a {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Efecto hover de cada opción del submenú */
+.dropdown-content a:hover {
+    background-color: var(--nav-hover);
+    color: var(--accent-color);
+    padding-left: 22px;
+}
+
+
+/* Cuando pases el mouse por el contenedor, cambia el submenú a display: block mostrandolo */
+.dropdown-menu:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* 6. FOOTER */
+
+footer {
+    /* Llama a la variable del fondo dependiendo de si es oscuro o claro */
+    background-color: var(--footer-bg); 
+    /* El texto  será blanco para que se lea sobre el fondo oscuro */
+    color: #ffffff; 
+    /* Crea un colchón de 30px de espacio por dentro para que el texto respire */
+    padding: 30px; 
+    /* Centra el texto de horizontalmente */
+    text-align: center;
+    /* Dibuja una línea de 5px en la parte superior del footer usando tu azul */
+    border-top: 5px solid var(--accent-hover); 
+    /* Empuja el footer 40px hacia abajo para separarlo del contenido principal */
+    margin-top: auto;
+    /* Efecto de difuminado suave cuando cambias entre modo claro y oscuro */
+    transition: var(--transition);
+}
+
+/* 7. CONTENEDOR PRINCIPAL Y CONTENIDO */
+.container {
+    /* Empuja al footer hasta abajo*/
+    flex-grow: 1; 
+    
+    /* Centrado del contenido */
+    max-width: 1000px; /* Evita que el texto se estire por toda la pantalla en monitores grandes */
+    margin: 40px auto; /* Centra el contenedor a los lados y le da 40px despacio arriba/abajo */
+    padding: 0 20px; /* Para que no pegue en el borde del celular */
+    width: 100%; /* Asegura que tome el espacio correcto */
+    box-sizing: border-box; /* Previene desbordamientos */
+}
+
+/* Estilo a la zona de bienvenida */
+.content {
+    background-color: var(--bg-nav);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    text-align: center; /* Centra el texto de bienvenida */
+    transition: var(--transition);
+}
+
+
+
+
+/* 8. DISEÑO DE TARJETA*/
+
+.cv_card {
+    display: flex; 
+    /* Se coloca en fila horizontal */
+    flex-direction: row;
+    /* Color de fondo de la tarjeta en día y noche */
+    background-color: var(--bg-nav);
+    /* Redondea las esquinas*/
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    /* Corta cualquier cosa que se salga del borde redondeado. */
+    overflow: hidden; 
+    /* Separa la tarjeta 20px del menú de arriba */
+    margin-top: 20px;
+    transition: var(--transition);
+}
+
+
+/* LADO IZQUIERDO */
+
+.cv-left {
+    
+    background-color: var(--accent-color);
+    /* Todo el texto será blanco*/
+    color: #ffffff;
+    padding: 40px 20px;
+    /* Esta columna tomará el 35% del ancho total de la tarjeta */
+    width: 35%; 
+    /* Centra el texto horizontalmente */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Los apila en vertical*/
+    align-items: center; /* Centra los elementos*/
+    transition: var(--transition);
+}
+
+.cv-photo {
+    /* Hace que la foto sea un cuadrado */
+    width: 160px;
+    height: 160px;
+    /*Borde blanco  */
+    border: 2px solid #ffffff; 
+    /* Esto evita que se apachurre o se estire
+    recortando la foto manteniendo la proporción. */
+    object-fit: cover; 
+    margin-bottom: 0px;
+}
+
+.cv-left h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    /* Dibuja una línea separadora debajo de "Contacto" */
+    border-bottom: 2px solid var(--accent-hover);
+    padding-bottom: 5px;
+    /* Sólo ocupa el 80% */
+    width: 80%;
+}
+
+.cv-left p {
+    /* Hace la letra pequeña para los datos de contacto */
+    font-size: 0.95rem;
+    margin: 8px 0;
+}
+
+
+/* LADO DERECHO */
+
+.cv-right {
+
+    padding: 40px;
+
+    width: 65%; 
+    /* Alinea el texto a la izquierda*/
+    text-align: left;
+}
+
+.cv-right h2 {
+    /* El tamaño y color del nombre */
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 2.2rem;
+    transition: var(--transition);
+}
+
+.cv-right h4 {
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.cv-right h3 {
+    /* Titulos*/
+    color: var(--accent-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--nav-hover);
+    padding-bottom: 5px;
+    transition: var(--transition);
+}
+
+/*HABILIDADES  */
+.cv-skills {
+    display: flex;
+    /* Wrap las manda automáticamente al renglón de abajo depende la pantalla */
+    flex-wrap: wrap; 
+    /* Separación entre cada etiqueta de arriba, abajo y a los lados */
+    gap: 12px;
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.cv-skills li {
+    background-color: var(--nav-hover);
+    color: var(--accent-color);
+    padding: 8px 15px;
+    border-radius: 20px; 
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+/* Efecto hover para resaltar colores cada que se pasa el mouse */
+.cv-skills li:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    /* Levanta la etiqueta 2 píxeles hacia arriba  */
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
 
 /* Diseño responsivo  */
 @media (max-width: 768px) {
 
     .container {
-        flex-direction: column;
-        height: auto; 
+        flex-direction: column; 
     }
 
     .sidebar {
