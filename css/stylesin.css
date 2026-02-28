@@ -16,7 +16,7 @@ body {
     flex-direction: column;
 }
 
-/* 2. MODO OSCURO EXACTO */
+/* 2. MODO OSCURO */
 body:has(#darkmode-toggle:checked) {
     --bg-main: #000000; /* Fondo negro */
     --bg-nav: #1f1f1f; /* Tarjetas y menú grises oscuros */
@@ -61,7 +61,10 @@ header h1 {
     
     display: flex;
     /* Centra los elementos verticalmente para que no queden chuecos */
-    align-items: center;
+    justify-content: space-between; /* ¡separa los elememntos del menú */
+
+    align-items: center; /* Centra todo */
+
     /* Espaciado interno: 1 rem arriba/abajo, y 5% a los lados (se adapta a la pantalla) */
     padding: 1rem 5%;
     /* Fondo del menú */
@@ -176,10 +179,10 @@ header h1 {
 .dropdown-menu {
     /* Sirve como "ancla" para que el menú oculto sepa de dónde desplegarse */
     position: relative;
-    /* Evita que el contenedor ocupe todo el ancho de la pantalla */
-    display: inline-block;
-    /* Da un respiro de 20px hacia abajo */
-    margin-bottom: 20px;
+    /* Evita que el contenedor ocupe todo el ancho de la pantalla 
+    display: inline-block;*/
+    /* Da un respiro de 20px hacia abajo 
+    margin-bottom: 20px;*/
 }
 
 /* El botón principal del menú */
@@ -275,7 +278,7 @@ footer {
     /* Dibuja una línea de 5px en la parte superior del footer usando tu azul */
     border-top: 5px solid var(--accent-hover); 
     /* Empuja el footer 40px hacia abajo para separarlo del contenido principal */
-    margin-top: 40px;
+    margin-top: auto;
     /* Efecto de difuminado suave cuando cambias entre modo claro y oscuro */
     transition: var(--transition);
 }
@@ -284,12 +287,13 @@ footer {
 .container {
     /* Empuja al footer hasta abajo*/
     flex-grow: 1; 
-    flex: 1;
+    
     /* Centrado del contenido */
     max-width: 1000px; /* Evita que el texto se estire por toda la pantalla en monitores grandes */
     margin: 40px auto; /* Centra el contenedor a los lados y le da 40px despacio arriba/abajo */
     padding: 0 20px; /* Para que no pegue en el borde del celular */
     width: 100%; /* Asegura que tome el espacio correcto */
+    box-sizing: border-box; /* Previene desbordamientos */
 }
 
 /* Estilo a la zona de bienvenida */
@@ -303,7 +307,164 @@ footer {
     transition: var(--transition);
 }
 
+/* 8. DISEÑO DE TARJETA*/
 
+.cv_card {
+    display: flex; 
+    /* Se coloca en fila horizontal */
+    flex-direction: row;
+    /* Color de fondo de la tarjeta en día y noche */
+    background-color: var(--bg-nav);
+    /* Redondea las esquinas*/
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    /* Corta cualquier cosa que se salga del borde redondeado. */
+    overflow: hidden; 
+    /* Separa la tarjeta 20px del menú de arriba */
+    margin-top: 20px;
+    transition: var(--transition);
+}
+
+
+/* LADO IZQUIERDO */
+
+.cv-left {
+    
+    background-color: var(--accent-color);
+    /* Todo el texto será blanco*/
+    color: #ffffff;
+    padding: 40px 20px;
+    /* Esta columna tomará el 35% del ancho total de la tarjeta */
+    width: 35%; 
+    /* Centra el texto horizontalmente */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Los apila en vertical*/
+    align-items: center; /* Centra los elementos*/
+    transition: var(--transition);
+}
+
+.cv-photo {
+    /* Hace que la foto sea un cuadrado */
+    width: 160px;
+    height: 160px;
+    /*Borde blanco  */
+    border: 2px solid #ffffff; 
+    /* Esto evita que se apachurre o se estire
+    recortando la foto manteniendo la proporción. */
+    object-fit: cover; 
+    margin-bottom: 0px;
+}
+
+.cv-left h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    /* Dibuja una línea separadora debajo de "Contacto" */
+    border-bottom: 2px solid var(--accent-hover);
+    padding-bottom: 5px;
+    /* Sólo ocupa el 80% */
+    width: 80%;
+}
+
+.cv-left p {
+    /* Hace la letra pequeña para los datos de contacto */
+    font-size: 0.95rem;
+    margin: 8px 0;
+}
+
+
+/* LADO DERECHO */
+
+.cv-right {
+
+    padding: 40px;
+
+    width: 65%; 
+    /* Alinea el texto a la izquierda*/
+    text-align: left;
+}
+
+.cv-right h2 {
+    /* El tamaño y color del nombre */
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 2.2rem;
+    transition: var(--transition);
+}
+
+.cv-right h4 {
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.cv-right h3 {
+    /* Titulos*/
+    color: var(--accent-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--nav-hover);
+    padding-bottom: 5px;
+    transition: var(--transition);
+}
+
+/*HABILIDADES  */
+.cv-skills {
+    display: flex;
+    /* Wrap las manda automáticamente al renglón de abajo depende la pantalla */
+    flex-wrap: wrap; 
+    /* Separación entre cada etiqueta de arriba, abajo y a los lados */
+    gap: 12px;
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.cv-skills li {
+    background-color: var(--nav-hover);
+    color: var(--accent-color);
+    padding: 8px 15px;
+    border-radius: 20px; 
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+/* Efecto hover para resaltar colores cada que se pasa el mouse */
+.cv-skills li:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    /* Levanta la etiqueta 2 píxeles hacia arriba  */
+    transform: translateY(-2px);
+}
+
+/*9. BOTÓN DE DESCARGA PDF */
+.btn-cv {
+    /* Convierte el enlace de texto en un bloque que acepta relleno y márgenes */
+    display: inline-block;
+    /* Lo separa desde el correo electrónico hacia abajo */
+    margin-top: 30px;
+    /* Tamaño al botón */
+    padding: 10px 20px;
+    /* Color de las tarjetas */
+    background-color: var(--bg-nav);
+    /* Texto del botón  */
+    color: var(--accent-color);
+    /* Le quita la raya de subrayad al enlace */
+    text-decoration: none;
+    font-weight: bold;
+    /* Le da forma de pastilla redondeada */
+    border-radius: 25px; 
+    transition: var(--transition);
+}
+
+.btn-cv:hover {
+    background-color: var(--nav-hover);
+    transform: translateY(-3px); 
+
+}
 
 /* Diseño responsivo  */
 @media (max-width: 768px) {
