@@ -284,11 +284,7 @@ footer {
 .container {
     /* Empuja al footer hasta abajo*/
     flex-grow: 1; 
-<<<<<<< HEAD
     
-=======
-    flex: 1;
->>>>>>> 547ca27659732dc8ef8841726dfc54acb5678f32
     /* Centrado del contenido */
     max-width: 1000px; /* Evita que el texto se estire por toda la pantalla en monitores grandes */
     margin: 40px auto; /* Centra el contenedor a los lados y le da 40px despacio arriba/abajo */
