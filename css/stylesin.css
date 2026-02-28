@@ -10,6 +10,12 @@
     --transition: all 0.3s ease;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 /* 2. MODO OSCURO EXACTO */
 body:has(#darkmode-toggle:checked) {
     --bg-main: #000000; /* Fondo negro */
@@ -112,22 +118,42 @@ header h1 {
 
 
 .label-switch {
-    /* Espaciado interno: 8px arriba/abajo y 18px a los lados para darle forma de pastilla */
-    padding: 8px 18px;
-    /* Dibuja un borde de 2 pixeles, sólido, usando tu azul principal */
-    border: 2px solid var(--bg-main);
-    /* Redondea las esquinas a 20px, haciéndolo parecer un botón moderno ovalado */
-    border-radius: 20px;
-    /* Cambia el cursor a una 'manita' cuando pasas por encima, indicando que es clickeable */
+    width: 60px;
+    height: 30px;
+    background-color: var(--nav-hover);
+    border-radius: 50px;
+    position: relative;
     cursor: pointer;
-    /* Tamaño de letra un poquito más pequeño que el texto normal */
-    font-size: 0.9rem;
-    /* Permite que el botón respete sus márgenes y rellenos sin romper la línea de texto */
     display: inline-block;
-    /* Color de la letra del botón  */
-    color: var(--bg-nav);
-    /* Hace que el cambio de color al pasar el mouse sea un degradado suave */
     transition: var(--transition);
+}
+
+/* Círculo interno */
+.label-switch::after {
+    content: "☀️";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 2px;
+    left: 2px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+/* Cuando el checkbox está activado */
+#darkmode-toggle:checked + .label-switch {
+    background-color: var(--accent-color);
+}
+
+/* Movimiento del círculo */
+#darkmode-toggle:checked + .label-switch::after {
+    transform: translateX(30px);
+    content: "🌙";
 }
 
 /* Efecto cuando el usuario pasa el mouse POR ENCIMA del botón */
@@ -184,21 +210,19 @@ header h1 {
 
 /* La caja oculta con las opciones  */
 .dropdown-content {
-    /* ¡ Mantiene la caja oculta hasta que se le llame */
-    display: none;
-    /* Lo saca del flujo normal y lo posiciona exactamente debajo del botón */
+    display: block;
     position: absolute;
-    /* Usa el fondo blanco en día y gris en noche */
     background-color: var(--bg-nav);
-    /* Ancho mínimo para que las palabras no se amontonen */
-    min-width: 160px;
-    /* Sombra elegante tipo flotante */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    /* Se asegura de que se despliegue por encima del resto de la página */
-    z-index: 1;
-    /* Esquinas redondeadas y recorta cualquier cosa que se salga */
-    border-radius: 5px;
+    min-width: 180px;
+    box-shadow: 0px 15px 25px rgba(0,0,0,0.15);
+    border-radius: 8px;
     overflow: hidden;
+    z-index: 1;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: all 0.35s ease;
 }
 
 /*  enlaces dentro del menú */
@@ -211,20 +235,29 @@ header h1 {
     /* Hace que cada enlace ocupe toda su línea  */
     display: block;
     transition: var(--transition);
+    transform: translateX(-10px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu:hover .dropdown-content a {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 /* Efecto hover de cada opción del submenú */
 .dropdown-content a:hover {
-    /* Fondo celeste al pasar el mouse */
     background-color: var(--nav-hover);
-    /* Texto en azul fuerte */
     color: var(--accent-color);
+    padding-left: 22px;
 }
 
 
 /* Cuando pases el mouse por el contenedor, cambia el submenú a display: block mostrandolo */
 .dropdown-menu:hover .dropdown-content {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 
@@ -251,7 +284,7 @@ footer {
 .container {
     /* Empuja al footer hasta abajo*/
     flex-grow: 1; 
-    
+    flex: 1;
     /* Centrado del contenido */
     max-width: 1000px; /* Evita que el texto se estire por toda la pantalla en monitores grandes */
     margin: 40px auto; /* Centra el contenedor a los lados y le da 40px despacio arriba/abajo */
@@ -269,20 +302,6 @@ footer {
     text-align: center; /* Centra el texto de bienvenida */
     transition: var(--transition);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
