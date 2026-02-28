@@ -1,18 +1,27 @@
+:root {
+    --primary: #1029BA;
+    --primary-dark: #0B1E8A;
+    --primary-light: #3F5BFF;
+    --background-soft: #F4F6FF;
+    --white: #FFFFFF;
+    --gray-dark: #1F2937;
+}
+
 /*  Estilos generales  */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: var(--background-soft);
     margin: 0;
 }
 
 /*  Header  */
 header {
-    background-color: #000114; 
     color: white;
     padding: 20px;
     text-align: center;
-    border-bottom: 2px solid #333;
+    background-color: var(--primary);
+    border-bottom: 2px solid var(--primary-dark);
 }
 
 /*  Contenedor principal */
@@ -20,8 +29,9 @@ header {
 
     width: 95%;
     margin: 20px auto;
-    border: 2px solid rgb(255, 119, 0);
-    background-color: rgba(0, 50, 187, 0.15);
+    border: 2px solid var(--primary);
+    background-color: var(--white);
+    border-radius: 8px;
     padding: 10px;
 
     display: flex;              
@@ -43,7 +53,7 @@ header {
 
 /*  Footer */
 footer {
-    background-color: #8b0000; 
+    background-color: var(--primary-dark);
     color: white;
     padding: 20px;
     text-align: center;
@@ -53,11 +63,12 @@ footer {
 
 a {
     text-decoration: none;
+    color: var(--primary);
 }
 
 a:hover {
     text-decoration: underline;
-    color: #0206f0;
+    color: var(--primary-light);
 }
 
 /*  Menú desplegable */
@@ -68,7 +79,9 @@ a:hover {
 
 /* Botón principal */
 .dropbtn {
-    background-color: #8b0000;
+    background-color: var(--primary);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
     color: white;
     padding: 12px;
     font-size: 16px;
@@ -97,8 +110,8 @@ a:hover {
 
 /* Hover en opciones */
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
-    color: #8b0000;
+    background-color: var(--background-soft);
+    color: var(--primary);
 }
 
 /* Mostrar menú al pasar el cursor */
@@ -108,7 +121,7 @@ a:hover {
 
 /* Cambio visual cuando pasas el mouse sobre el botón */
 .dropdown-menu:hover .dropbtn {
-    background-color: #a30000;
+    background-color: var(--primary-dark);
 }
 
 /* Diseño responsivo  */
