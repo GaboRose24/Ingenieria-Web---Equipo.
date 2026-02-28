@@ -1,0 +1,129 @@
+/*  Estilos generales  */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+/*  Header  */
+header {
+    background-color: #000114; 
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+/*  Contenedor principal */
+.container {
+
+    width: 95%;
+    margin: 20px auto;
+    border: 2px solid rgb(255, 119, 0);
+    background-color: rgba(0, 50, 187, 0.15);
+    padding: 10px;
+
+    display: flex;              
+    gap: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1 1 100%;
+    min-height: auto;
+}
+
+/*  Contenido principal */
+.content {
+    flex: 1 1 100%;
+    border-left: none;
+    border-top: 2px solid #333;
+}
+
+/*  Footer */
+footer {
+    background-color: #8b0000; 
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0206f0;
+}
+
+/*  Menú desplegable */
+.dropdown-menu {
+    position: relative;
+    width: 200px;
+}
+
+/* Botón principal */
+.dropbtn {
+    background-color: #8b0000;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    text-align: left;
+}
+
+/* Contenedor oculto */
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #ffffff;
+    width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Opciones del menú */
+.dropdown-content a {
+    color: black;
+    padding: 12px;
+    display: block;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover en opciones */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #8b0000;
+}
+
+/* Mostrar menú al pasar el cursor */
+.dropdown-menu:hover .dropdown-content {
+    display: block;
+}
+
+/* Cambio visual cuando pasas el mouse sobre el botón */
+.dropdown-menu:hover .dropbtn {
+    background-color: #a30000;
+}
+
+/* Diseño responsivo  */
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column; 
+    }
+
+    .sidebar {
+        flex: 1 1 100%;
+        min-height: auto;
+    }
+
+    .dropdown-content {
+        position: relative; /* evita que se desborde */
+    }
+}
