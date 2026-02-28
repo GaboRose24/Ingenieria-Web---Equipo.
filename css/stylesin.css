@@ -307,9 +307,6 @@ footer {
     transition: var(--transition);
 }
 
-
-
-
 /* 8. DISEÑO DE TARJETA*/
 
 .cv_card {
@@ -443,11 +440,31 @@ footer {
     transform: translateY(-2px);
 }
 
+/*9. BOTÓN DE DESCARGA PDF */
+.btn-cv {
+    /* Convierte el enlace de texto en un bloque que acepta relleno y márgenes */
+    display: inline-block;
+    /* Lo separa desde el correo electrónico hacia abajo */
+    margin-top: 30px;
+    /* Tamaño al botón */
+    padding: 10px 20px;
+    /* Color de las tarjetas */
+    background-color: var(--bg-nav);
+    /* Texto del botón  */
+    color: var(--accent-color);
+    /* Le quita la raya de subrayad al enlace */
+    text-decoration: none;
+    font-weight: bold;
+    /* Le da forma de pastilla redondeada */
+    border-radius: 25px; 
+    transition: var(--transition);
+}
 
+.btn-cv:hover {
+    background-color: var(--nav-hover);
+    transform: translateY(-3px); 
 
-
-
-
+}
 
 /* Diseño responsivo  */
 @media (max-width: 768px) {
